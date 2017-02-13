@@ -3,6 +3,7 @@ apply plugin: 'java'
 // apply plugin: 'eclipse'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'war'
+apply plugin: 'jetty'
 
 
 
@@ -17,13 +18,30 @@ repositories {
 dependencies{
     // https://mvnrepository.com/artifact/junit/junit
     compile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/org.springframework/spring-webmvc
+	compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.6.RELEASE'
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.8.6'
+	// https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl
+	compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
+	
+    
 }
+
+jettyRun {
+     reload = "automatic" 
+     scanIntervalSeconds = 1
+     httpPort = 1234
+     stopPort = 4321
+     stopKey = 'stop'
+ }
 
 jar {
 	baseName ='loserStarGradleTest-gradle'
 	version ='0.1.0'
 
 }
+
 
 /*
 //构建java工程基本目录
