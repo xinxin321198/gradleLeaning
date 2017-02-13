@@ -1,0 +1,48 @@
+//一个简单任务,-q不打印日志执行
+task hello {
+    doLast {
+        println 'Hello world!'
+    }
+}
+
+
+//简单创建任务
+task hello2 << {
+    println 'Hello2222222222222222   world!'
+}
+
+//变量
+task upper << {
+    String someString = 'mY_nAmE'
+    println "Original: " + someString
+    println "Upper case: " + someString.toUpperCase()
+}
+
+
+//循环10次输出item
+task count << {
+    10.times { print "$it " }
+}
+
+
+//依赖
+task de(dependsOn:count) << {
+    println "依赖"
+}
+
+//动态任务,
+20.times { counter ->
+    task "task$counter" << {
+        println "I'm task number $counter"
+    }
+}
+
+//动态添加任务的一些属性
+//添加依赖
+task0.dependsOn de 
+//添加输出
+task1<<{
+    println "新添加的输出"
+}
+
+
