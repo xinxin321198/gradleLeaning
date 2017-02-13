@@ -14,6 +14,8 @@ repositories {
     mavenCentral()
 }
 
+
+/*
 //构建java工程基本目录
 task createJavaProject << {
     sourceSets*.java.srcDirs*.each{ it.mkdirs() }
@@ -25,3 +27,5 @@ task createWebProject(dependsOn: 'createJavaProject') << {
     def webAppDir = file("$webAppDirName")
     webAppDir.mkdirs()
 }
+
+*/
