@@ -62,3 +62,5 @@ defaultTasks "defaultTask"
 task defaultTask <<{
     println "这是一个默认task"
 }
+
+//我只是测试一下
