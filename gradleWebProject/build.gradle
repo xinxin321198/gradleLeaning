@@ -1,0 +1,26 @@
+//构建java webProject
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+
+
+
+//添加jar包依赖的地址，使用maven仓库
+repositories {
+    maven {
+        url "http://maven.aliyun.com/nexus/content/groups/public/"
+    }
+    mavenCentral()
+}
+
+//构建java工程基本目录
+task createJavaProject << {
+    sourceSets*.java.srcDirs*.each{ it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each{ it.mkdirs()}
+}
+
+//构建javaweb工程
+task createWebProject(dependsOn: 'createJavaProject') << {
+    def webAppDir = file("$webAppDirName")
+    webAppDir.mkdirs()
+}
