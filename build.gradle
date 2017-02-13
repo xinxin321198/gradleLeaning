@@ -21,27 +21,30 @@ task upper << {
 
 //循环10次输出item
 task count << {
-    10.times { print "$it " }
+    10. times {
+        print "$it "
+    }
 }
 
 
 //依赖
-task de(dependsOn:count) << {
+task de(dependsOn: count) << {
     println "依赖"
 }
 
 //动态任务,
-20.times { counter ->
-    task "task$counter" << {
-        println "I'm task number $counter"
-    }
+20.times {
+    counter->
+        task "task$counter" << {
+            println "I'm task number $counter"
+        }
 }
 
 //动态添加任务的一些属性
 //添加依赖
-task0.dependsOn de 
+task0.dependsOn de
 //添加输出
-task1<<{
+task1 << {
     println "新添加的输出"
 }
 
@@ -59,9 +62,61 @@ task printTaskProperties << {
 //默认task
 defaultTasks "defaultTask"
 
-task defaultTask <<{
+task defaultTask << {
     println "这是一个默认task"
 }
 
 //我只是测试一下
 // 我再次测试一下
+// ------------------------------------------------------------------------------------------------------
+
+
+
+//构建java webProject
+apply plugin: 'java'
+
+//添加jar包依赖的地址，使用maven仓库
+repositories {
+    maven {
+        url "http://maven.aliyun.com/nexus/content/groups/public/"
+    }
+    mavenCentral()
+}
+
+//依赖的框架及版本
+dependencies {
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+
+
+// 自定义 项目
+sourceCompatibility = 1.5
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
+}
+
+//测试task
+test {
+    systemProperties 'property': 'value'
+}
+
+
+//发布jar的路径
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'target'
+       }
+    }
+}
+
+
+//----------------------------------------------
+//创建eclipse工程
+apply plugin: 'eclipse'
