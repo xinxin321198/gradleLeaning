@@ -1,1 +1,2 @@
 # gradleTest
+自己的一个学习gradle的demo
