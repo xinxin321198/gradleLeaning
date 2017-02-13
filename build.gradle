@@ -54,3 +54,11 @@ task myTask {
 task printTaskProperties << {
     println myTask.myProperty
 }
+
+
+//默认task
+defaultTasks "defaultTask"
+
+task defaultTask <<{
+    println "这是一个默认task"
+}
