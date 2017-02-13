@@ -46,3 +46,11 @@ task1<<{
 }
 
 
+//为task添加一些属性
+task myTask {
+    ext.myProperty = "myValue"
+}
+
+task printTaskProperties << {
+    println myTask.myProperty
+}
