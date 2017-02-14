@@ -1,3 +1,4 @@
+taskkill /F /IM "java.exe"
 @rem @for /F "delims=" %%I in ("%~dp0") do echo %%~fI
 @echo off
 chcp 936

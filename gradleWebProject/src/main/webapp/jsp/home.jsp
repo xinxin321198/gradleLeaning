@@ -8,5 +8,7 @@
 </head>
 <body>
 11111111111111home home home.jsp
+<%="hehe11111111111"+"laoluo" %>
+<%System.out.println("sysyssysyysysysysysys"); %>
 </body>
 </html>

@@ -3,7 +3,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 // apply plugin: 'eclipse-wtp'
 apply plugin: 'war'
-apply plugin: 'jetty'
+
 
 
 //添加jar包依赖的地址，使用maven仓库
@@ -17,31 +17,40 @@ repositories {
 
 
 dependencies{
-    // https://mvnrepository.com/artifact/junit/junit
-    compile group: 'junit', name: 'junit', version: '4.12'
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-context
+    compile group: 'org.springframework', name: 'spring-context', version: '4.3.6.RELEASE'
+    // https://mvnrepository.com/artifact/org.springframework/spring-core
+    compile group: 'org.springframework', name: 'spring-core', version: '4.3.6.RELEASE'
+    // https://mvnrepository.com/artifact/org.springframework/spring-context-support
+    compile group: 'org.springframework', name: 'spring-context-support', version: '4.3.6.RELEASE'
+    // https://mvnrepository.com/artifact/org.springframework/spring-orm
+    compile group: 'org.springframework', name: 'spring-orm', version: '4.3.6.RELEASE'
     // https://mvnrepository.com/artifact/org.springframework/spring-webmvc
 	compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.6.RELEASE'
-	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+    // https://mvnrepository.com/artifact/org.springframework/spring-test
+    compile group: 'org.springframework', name: 'spring-test', version: '4.3.6.RELEASE'
+
+
+    
+
+    // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.0-b01'
+    // https://mvnrepository.com/artifact/javax.servlet/jstl
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+    
+
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.6'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
 	compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.8.6'
 	// https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl
 	compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
-    compile 'org.slf4j:slf4j-api:1.7.12'  
-    // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
-    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.0-b01'
 
-
+    // https://mvnrepository.com/artifact/junit/junit
+    compile group: 'junit', name: 'junit', version: '4.12'
 	
 }
-
- 
-
-jettyRun {
-     reload = "automatic" 
-     scanIntervalSeconds = 1
-     httpPort = 1234
-     stopPort = 4321
-     stopKey = 'stop'
- }
 
 jar {
 	baseName ='loserStarGradleTest-gradle'
