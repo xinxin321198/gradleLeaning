@@ -14,12 +14,10 @@ apply plugin: 'war'
 
 // In this section you declare where to find the dependencies of your project
 repositories {
-    // 表示依赖是从本地的Maven仓库中获取的
-    mavenLocal()
     //通过URL地址添加一个Maven仓库
-    maven {
-        url "http://maven.aliyun.com/nexus/content/groups/public/"
-    }
+    // maven {
+    //     url "http://maven.aliyun.com/nexus/content/groups/public/"
+    // }
     // 表示依赖是从Central Maven 2 仓库中获取的
     mavenCentral()
     // 表示依赖是从Bintary’s JCenter Maven 仓库中获取的
@@ -27,8 +25,16 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit test framework
-    testCompile 'junit:junit:4.12'
+    /*
+    compile如果你的jar包/依赖代码 在编译的时候需要依赖，在运行的时候也需要
+    runtime配置项中包含的依赖在运行时是必须的。
+    testCompile配置项中包含的依赖在编译项目的测试代码时是必须的。
+    testRuntime配置项中包含的依赖在运行测试代码时是必须的。
+    archives配置项中包含项目生成的文件（如Jar文件）。
+    default配置项中包含运行时必须的依赖。
+    providedCompile如果你的jar包/依赖代码 仅在编译的时候需要，但是在运行时不需要依赖
+    */
+    // testCompile 'junit:junit:4.12'
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0' 
 }
 
